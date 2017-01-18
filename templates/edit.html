@@ -1,0 +1,56 @@
+<ion-view>
+<!-- header -->
+<div class="bar bar-header bar-assertive"><h1 class='title'>{{title}}</h1></div>
+<!-- close header -->
+
+<!-- content -->
+<ion-content class="has-header">
+</div> 
+    <div data-ng-repeat="choice in choices">
+		<label class="item item-input item-floating-label">
+		    <span class="input-label">Question</span>
+		<input type="text" ng-model="choice.question" name="" placeholder="Question" disabled="check">
+		</label>
+		<label class="item item-select item-select-left" >
+	      <select ng-model="choice.answerType" ng-change="setAnswerField({{choice.answerType}})">
+		  	<option value="" selected disabled>select answer type</option>
+		  	<option value="text">textarea</option>
+		  	<option value="yesOrNo">yes or no</option>
+		  	<option value="scale">experience scale</option>
+		  	<option value="radio">radio buttons</option>
+		  </select> 
+		</label>
+		<div ng-show='choice.answerType==="radio"' class="ng-cloak">
+		<div data-ng-repeat="answer in choice.answer">
+			<label class="item item-input item-floating-label">
+				<span class="input-label">{{answer.id}}</span>
+			<input type="text" ng-model="answer.value" name="" placeholder="{{answer.id}}">
+			</label>
+			<button class="remove" ng-show="$last" ng-click="removeChoice()">✘</button>
+		</div>
+		</div>
+   </div>
+   <div class="row" style="margin:10px">
+		  <div class="col col-50">
+		  	<button class="button button-balanced" type="submit" ng-disabled="activateButton">Update  survey ➤</button>
+		  </div>
+		  <div class="col col-50">
+			<button class="button button-assertive" style="font-size: x-large;color:#fff" ng-click='ionicHistory()'>
+			☇ back</i>
+			</button>
+		  </div>
+	   </div>
+   <ion-footer-bar style="background-color: #0D47A1;color: #000;" ng-click="addNewChoice()" >
+ 		<div class="row">
+				<div class="col col-80">Add a new Option</div>
+				<div class="col col-10">&nbsp;</div>
+				<div class="col col-10">✚</div>
+		</div>
+	</ion-footer-bar>
+
+<!-- <div id="choicesDisplay">
+      {{ choices }}
+   </div>
+ -->
+ </ion-content>
+</ion-view>
