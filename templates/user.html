@@ -1,0 +1,51 @@
+<ion-view>
+<!-- header -->
+<div class="bar bar-header" style="background-color: #d32f2f;"><h1 class='title'>{{title}}</h1>
+<div class="buttons">
+    <button class="button button-clear" ng-click="logout()">
+    <i class="icon ion-ios-person" style="font-size: x-large;color:#34465d;"></i>
+    </button>
+  </div>
+</div>
+<!-- close header -->
+
+<!-- content -->
+<ion-content class="has-header">
+	<div class="list">
+		<a href="#/create" class="item" style="background-color: #0D47A1">
+			<div class="row">
+				<div class="col col-80">Create a New Survey</div>
+				<div class="col col-10">&nbsp;</div>
+				<div class="col col-10">✚</div>
+			</div>
+		</a> 
+		<!-- ng-repeat all survey elements -->
+	  		<a class="item" style="background-color: #FBC02D">
+	  			<div class="row">
+	  				<div class="col col-10">&nbsp;
+	  				</div>
+	  				<h1 class="col col-50" style="font-size: x-large;padding: 0px;margin-top: 10px">
+	  					list header
+	  				</h1>
+	  				<div class="col col-10">&nbsp;
+	  				</div>
+	  				<div class="col col-10" ng-click="delete()">
+	  					<button class="button button-clear" style="font-size: x-large;margin:-5px;color:rgba(255,0,0,0.8);">✘
+		    			</button>
+		    		</div>
+	  				<div class="col col-10">
+		    			<button class="button button-clear">
+		    				<i class="icon ion-ios-pie" style="font-size: x-large;color:#34465d;"></i>
+		    			</button>
+	  				</div>
+		    		<div class="col col-10">
+		    			<button class="button button-clear" style="font-size: x-large;color:#34465d"><i class="icon ion-chevron-right"></i>
+		    			</button>
+		    		</div>
+		    	</div>
+		    </a>
+		    	  		
+  		<!-- ng-repeat end -->
+	</div>
+</ion-content>
+</ion-view>

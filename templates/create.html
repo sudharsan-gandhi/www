@@ -1,0 +1,48 @@
+<ion-view>
+<!-- header -->
+<div class="bar bar-header" style="background-color: #d32f2f;"><h1 class='title'>{{title}}</h1>
+<div class="buttons">
+    <button class="button button-clear" ng-click="logout()">
+    <i class="icon ion-ios-person" style="font-size: x-large;color:#34465d;"></i>
+    </button>
+  </div>
+</div>
+<!-- close header -->
+
+<!-- content -->
+<ion-content class="has-header">
+	<div class="list">
+	  <label class="item item-input item-floating-label">
+	    <span class="input-label">Survey Name</span>
+	    <input type="text" placeholder="Survey Name" ng-model="form.suveyName">
+	  </label>
+	  <label class="item item-input item-floating-label">
+	    <span class="input-label">Start Date</span>
+	    <input type="date" placeholder="Start Date" ng-model="form.startDate">
+	  </label>
+	  <label class="item item-input item-floating-label">
+	    <span class="input-label">End Date</span>
+	    <input type="date" placeholder="End Date" min="{{form.startDate}}" ng-model="form.endDate">
+	  </label>
+	  <label class="item item-input item-floating-label">
+	    <span class="input-label">Category</span>
+	    <input type="text" placeholder="Category" ng-model="form.category" ng-change="disableButton(form)">
+	  </label>
+	  <label class="item item-input item-floating-label">
+	    <span class="input-label">Maximum Replies allowed</span>
+	    <input type="number" min="1" placeholder="Maximum Replies allowed" ng-model="form.max_replies">
+	  </label>
+
+	  <div class="row" style="margin:10px">
+		  <div class="col col-50">
+		  	<button class="button button-balanced" type="submit" ng-disabled="activateButton" ng-click="createSurvey(form)">create survey ➤</button>
+		  </div>
+		  <div class="col col-50">
+			<button class="button button-assertive" style="font-size: x-large;color:#fff" ng-click='ionicHistory()'>
+			☇ back</i>
+			</button>
+		  </div>
+	   </div>
+	</div>
+</ion-content>
+</ion-view>
