@@ -22,12 +22,16 @@ angular.module('app.controller',[])
 			var list=new Rest();
 			angular.copy(form,list);
 			console.log(JSON.stringify(list));
-			list.$save(function(result){
-				window.alert(result);
+			list.$save(function(error){
+				// if (result=="success") {}
+				window.alert('success');
+				$state.go('initiate');
+			},function(success){
+				window.alert('error');
 			});
 			// redirect with success of callback else view error.
 			// $state.go('initiate');
-		}
+		};
 
 		// ionic history going back
 		$scope.ionicHistory=function(){
