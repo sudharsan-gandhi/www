@@ -22,15 +22,14 @@ angular.module('app.controller',[])
 			var list=new Rest();
 			angular.copy(form,list);
 			console.log(JSON.stringify(list));
-			list.$save(function(error){
-				// if (result=="success") {}
-				window.alert('success');
-				$state.go('initiate');
-			},function(success){
-				window.alert('error');
-			});
-			// redirect with success of callback else view error.
-			// $state.go('initiate');
+			// list.$save(function(error){
+			// 	// if (result=="success") {}
+			// 	window.alert('success');
+			// 	$state.go('initiate');
+			// },function(success){
+			// 	window.alert('error');
+			// });
+			 	$state.go('initiate');
 		};
 
 		// ionic history going back
@@ -52,7 +51,7 @@ angular.module('app.controller',[])
 
 
 	})
-	.controller('initiateController',function($scope,authenticate,$ionicHistory){
+	.controller('initiateController',function($scope,authenticate,$ionicHistory,$resource,api){
 		// body...
 		$scope.title="initiate";
 		authenticate.setRootScope();
@@ -74,8 +73,27 @@ angular.module('app.controller',[])
 		 };
 		 // ionic history going back
 		$scope.ionicHistory=function(){
-			console.log("clicked");
+			// console.log("clicked");
 			$ionicHistory.goBack();
+		};
+		$scope.addQuestion=function(){
+			// console.log(JSON.stringify($scope.choices));
+			var Rest=$resource(api.getApi()+'/addQuestion');
+			// console.log('api'+api.getApi());
+			var list=new Rest();
+			list.question=$scope.choices[0].question;
+			list.answer=$scope.choices[0].answer;
+			list.answerType=$scope.choices[0].answerType;
+			console.log(JSON.stringify(list));
+			list.$save(function(success){
+				window.alert('successfully added');
+				$scope.choices = [{
+							'answer':[{'id':'answer1'}]
+							}];
+			},
+			function(error){
+				window.alert('error try again');
+			});
 		};
 	})
 	.controller('statusController',function($scope,authenticate){
